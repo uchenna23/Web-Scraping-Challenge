@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        #tabtab {
+            margin: auto;
+            width: 60% !important; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 style="text-align: center;" class="display-4">Mission to Mars</h1>
+            <p style="text-align: center;" class="lead">All you need to know.</p>
+            <hr class="my-4">
+            <div class='text-center'>
+                <button style='align-content: center;' type='button' class="btn btn-primary text-center" onClick="window.location.reload()">Scrape New Data</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2 style="text-align: center">Latest Mars News</h2>
+        <p style='font-size: large;text-align: center;'>{{ out[0]['news_title'] }}</p>
+        <p style="text-align: center;">{{ out[0]['news_body'] }}</p>
+    </div>
+
+    <hr class="my-4">
+    
+    <div class="container">
+        <h2 style="text-align: center">Featured Mars Image</h2>
+        <img style="display:block; margin-left: auto; margin-right: auto; width: 90% !important;" src="{{ out[0]['featured_url'] }}">
+    </div>
+
+    <hr class="my-4">
+
+    <div class="container">
+        <h2 style="text-align: center">Mars Facts</h2>
+        {{ out[0]['mars_info']|safe }}
+    </div>
+
+    <hr class="my-4">
+
+    <div class="container">
+        <h2 style="text-align: center;">Mars Hemispheres</h2>
+        <div class="row">
+            <div class="col-3">
+                <a href="{{ out[0]['hemi_images'][0]['hemi_url'] }}"><img src="{{ out[0]['hemi_images'][0]['hemi_url'] }}" alt="Max Temperature" class="img-thumbnail"></a>
+                <p>{{ out[0]['hemi_images'][0]['title'] }}</p>
+            </div>
+            <div class="col-3">
+                <a href="{{ out[0]['hemi_images'][1]['hemi_url'] }}"><img src="{{ out[0]['hemi_images'][1]['hemi_url'] }}" alt="Max Temperature" class="img-thumbnail"></a>
+                <p>{{ out[0]['hemi_images'][1]['title'] }}</p>
+            </div>
+            <div class="col-3">
+                <a href="{{ out[0]['hemi_images'][2]['hemi_url'] }}"><img src="{{ out[0]['hemi_images'][2]['hemi_url'] }}" alt="Max Temperature" class="img-thumbnail"></a>
+                <p>{{ out[0]['hemi_images'][2]['title'] }}</p>
+            </div>
+            <div class="col-3">
+                <a href="{{ out[0]['hemi_images'][3]['hemi_url'] }}"><img src="{{ out[0]['hemi_images'][3]['hemi_url'] }}" alt="Max Temperature" class="img-thumbnail"></a>
+                <p>{{ out[0]['hemi_images'][3]['title'] }}</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
